@@ -22,12 +22,12 @@ provider "aws" {
 provider "aws" {
   alias               = "sponsored"
   region              = "us-east-1"
-  allowed_account_ids = ["886436969878"]
+  allowed_account_ids = ["886436969878"] // TODO
 
   // This will authenticate using credentials from the project account, then assume the
   // "dandi-infrastructure" role from the sponsored account to manage resources there
   assume_role {
-    role_arn = "arn:aws:iam::886436969878:role/dandi-infrastructure"  
+    role_arn = "arn:aws:iam::886436969878:role/dandi-infrastructure"   // TODO
   }
 
   # Must set AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY envvars for project account in Terraform
