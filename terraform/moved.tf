@@ -100,10 +100,10 @@ moved {
   to   = module.api_sandbox.module.storage.aws_s3_bucket_policy.storage
 }
 
-# moved {
-#   from = module.api_staging.module.heroku.heroku_app.heroku
-#   to   = module.api_sandbox.module.heroku.heroku_app.heroku
-# }
+moved {
+  from = module.api_staging.module.heroku.heroku_app.heroku
+  to   = module.api_sandbox.module.heroku.heroku_app.heroku
+}
 
 moved {
   from = module.api_staging.module.smtp.aws_route53_record.smtp_dkim[0]

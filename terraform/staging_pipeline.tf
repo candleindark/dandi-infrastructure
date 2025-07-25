@@ -1,5 +1,9 @@
 # See api.tf for the definition of the production app
 
+import {
+  to = module.api_staging.module.heroku.heroku_domain.heroku
+  id = "ember-dandi-api-sandbox:api-dandi-sandbox.emberarchive.org"
+}
 
 module "api_sandbox" {
   source  = "kitware-resonant/resonant/heroku"
@@ -50,6 +54,7 @@ module "api_sandbox" {
     # URLs to be used concurrently. Once we're ready to make the full switchover to sandbox,
     # this can be removed.
     # DJANGO_ALLOWED_HOSTS = "api-staging.dandiarchive.org,api.sandbox.dandiarchive.org"
+
   }
   additional_sensitive_django_vars = {
     DJANGO_DANDI_DOI_API_PASSWORD = var.test_doi_api_password
