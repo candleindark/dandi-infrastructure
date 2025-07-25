@@ -1,7 +1,7 @@
 # See api.tf for the definition of the production app
 
 import {
-  to = module.api_staging.module.heroku.heroku_domain.heroku
+  to = module.api_sandbox.module.heroku.heroku_domain.heroku
   id = "ember-dandi-api-sandbox:api-dandi-sandbox.emberarchive.org"
 }
 
