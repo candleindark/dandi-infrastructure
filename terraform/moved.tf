@@ -11,11 +11,6 @@ moved {
 }
 
 moved {
-  from = module.api_staging.module.heroku.heroku_app.heroku
-  to   = module.api_sandbox.module.heroku.heroku_app.heroku
-}
-
-moved {
   from = module.api_staging.module.heroku.heroku_formation.heroku_worker
   to   = module.api_sandbox.module.heroku.heroku_formation.heroku_worker
 }
