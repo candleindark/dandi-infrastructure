@@ -57,14 +57,6 @@ resource "heroku_formation" "api_checksum_worker" {
   quantity = 1
 }
 
-// TODO: Delete when we update prod on dandi-archive
-resource "heroku_formation" "api_analytics_worker" {
-  app_id   = module.api.heroku_app_id
-  type     = "analytics-worker"
-  size     = "basic" // "standard-1x"
-  quantity = 1
-}
-
 data "aws_iam_user" "api" {
   user_name = module.api.heroku_iam_user_id
 }
