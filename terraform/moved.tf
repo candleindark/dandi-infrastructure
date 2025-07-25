@@ -1,3 +1,15 @@
+# TODO: these are the old staging resourcVes that we are moving to sandbox.
+# They will be removed once the sandbox is fully operational and the staging
+# resources are no longer needed.
+moved {
+  from = module.api_staging.module.heroku.heroku_domain.heroku
+  to   = module.api_sandbox.module.heroku.heroku_domain.heroku
+}
+moved {
+  from = module.api_staging.aws_route53_record.heroku
+  to = module.api_sandbox.aws_route53_record.heroku
+}
+
 moved {
   from = module.api_staging.module.heroku.heroku_app.heroku
   to   = module.api_sandbox.module.heroku.heroku_app.heroku
