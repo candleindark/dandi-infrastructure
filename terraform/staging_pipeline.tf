@@ -88,25 +88,3 @@ resource "heroku_pipeline_coupling" "production" {
   stage    = "production"
 }
 
-# TODO: these are the old staging resources that we are moving to sandbox.
-# They will be removed once the sandbox is fully operational and the staging
-# resources are no longer needed.
-resource "heroku_domain" "staging_old" {
-  app_id   = module.api_sandbox.heroku_app_id
-  hostname = "https://api-dandi-sandbox.emberarchive.org"
-}
-moved {
-  from = module.api_staging.module.heroku.heroku_domain.heroku
-  to   = heroku_domain.staging_old
-}
-resource "aws_route53_record" "staging_old" {
-  zone_id = "Z02063701JNV8GCOUJIZZ"
-  name    = "api-staging"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["tropical-jaguar-onayajsev8r1nuze664ms6jb.herokudns.com"]
-}
-moved {
-  from = module.api_staging.aws_route53_record.heroku
-  to   = aws_route53_record.staging_old
-}
