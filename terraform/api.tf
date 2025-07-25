@@ -2,11 +2,6 @@ data "heroku_team" "dandi" {
   name = "ember-dandi"
 }
 
-# import {
-#   to = module.api.module.heroku.heroku_domain.heroku
-#   id = "ember-dandi-api:api-dandi.emberarchive.org"
-# }
-
 module "api" {
   source  = "kitware-resonant/resonant/heroku"
   version = "1.1.1"
@@ -19,8 +14,8 @@ module "api" {
   heroku_web_dyno_size    = "basic" // "standard-2x"
   heroku_worker_dyno_size = "basic" // "standard-2x"
   heroku_postgresql_plan  = "essential-0" // "standard-0"
-  heroku_cloudamqp_plan   = "ermine" // originally had squirrel-1 
-  heroku_papertrail_plan  = "choklad" // "liatorp"
+  heroku_cloudamqp_plan   = "ermine" // "squirrel-1"
+  heroku_papertrail_plan  = "choklad" // "fredrik"
 
   heroku_web_dyno_quantity    = 1 // 3 - getting error that >1 basic dyno is not allowed
   heroku_worker_dyno_quantity = 1
@@ -62,6 +57,7 @@ resource "heroku_formation" "api_checksum_worker" {
   quantity = 1
 }
 
+// TODO: Delete when we update prod on dandi-archive
 resource "heroku_formation" "api_analytics_worker" {
   app_id   = module.api.heroku_app_id
   type     = "analytics-worker"

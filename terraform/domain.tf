@@ -26,6 +26,14 @@ resource "aws_route53_record" "gui-staging" {
   records = ["gui-dandi-sandbox-emberarchive-org.netlify.com"]
 }
 
+resource "aws_route53_record" "gui-sandbox" {
+  zone_id = aws_route53_zone.dandi.zone_id
+  name    = "sandbox"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["sandbox-dandiarchive-org.netlify.com"]
+}
+
 resource "aws_route53_record" "www" {
   zone_id = aws_route53_zone.dandi.zone_id
   name    = "www"
