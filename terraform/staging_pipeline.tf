@@ -93,7 +93,7 @@ resource "heroku_pipeline_coupling" "production" {
 # resources are no longer needed.
 resource "heroku_domain" "staging_old" {
   app_id   = module.api_sandbox.heroku_app_id
-  hostname = "api-staging.dandiarchive.org"
+  hostname = "https://api-dandi-sandbox.emberarchive.org"
 }
 moved {
   from = module.api_staging.module.heroku.heroku_domain.heroku

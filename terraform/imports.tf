@@ -5,5 +5,5 @@ import {
 
 import {
   to = module.api_sandbox.module.heroku.heroku_domain.heroku
-  id = "dandi-api-staging:api.sandbox.dandiarchive.org"
+  id = "dandi-api-staging:api-dandi-sandbox.emberarchive.org"
 }

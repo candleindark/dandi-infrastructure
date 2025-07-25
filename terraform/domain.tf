@@ -31,7 +31,7 @@ resource "aws_route53_record" "gui-sandbox" {
   name    = "sandbox"
   type    = "CNAME"
   ttl     = "300"
-  records = ["sandbox-dandiarchive-org.netlify.com"]
+  records = ["https://apl-setup--ember-dandi-archive.netlify.app/"] # TODO: emberify
 }
 
 resource "aws_route53_record" "www" {
