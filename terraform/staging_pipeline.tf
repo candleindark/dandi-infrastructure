@@ -83,7 +83,7 @@ resource "heroku_pipeline_coupling" "staging" {
 }
 
 resource "heroku_pipeline_coupling" "production" {
-  app_id   = module.api.heroku_app_iked
+  app_id   = module.api.heroku_app_id
   pipeline = heroku_pipeline.dandi_pipeline.id
   stage    = "production"
 }
