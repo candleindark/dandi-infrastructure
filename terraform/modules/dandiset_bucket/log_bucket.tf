@@ -20,24 +20,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "log_bucket" {
 
 data "aws_iam_policy_document" "dandiset_log_bucket_policy" {
   statement {
-    resources = [
-      "${aws_s3_bucket.log_bucket.arn}",
-      "${aws_s3_bucket.log_bucket.arn}/*",
-    ]
-
-    actions = [
-      # Needed for the app to process logs for collecting download analytics
-      "s3:GetObject",
-      "s3:ListBucket",
-    ]
-
-    principals {
-      type        = "AWS"
-      identifiers = [var.heroku_user.arn]
-    }
-  }
-
-  statement {
     sid       = "S3ServerAccessLogsPolicy"
     effect    = "Allow"
     resources = ["${aws_s3_bucket.log_bucket.arn}/*"]

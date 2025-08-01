@@ -17,10 +17,10 @@ module "sponsored_dandiset_bucket" {
 // Embargoed data is stored in the public bucket defined above
 module "sponsored_embargo_bucket" {
   source          = "./modules/dandiset_bucket"
-  bucket_name     = "ember-dandi-archive-private"
+  bucket_name     = "ember-dandi-archive-embargo"
   versioning      = false
   heroku_user     = data.aws_iam_user.api
-  log_bucket_name = "ember-dandi-archive-private-logs"
+  log_bucket_name = "ember-dandi-archive-embargo-logs"
   providers = {
     aws         = aws.sponsored
     aws.project = aws
