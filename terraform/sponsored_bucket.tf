@@ -13,6 +13,8 @@ module "sponsored_dandiset_bucket" {
   }
 }
 
+// Note: While the embargo bucket is created in AWS, it is NOT actually used.
+// Embargoed data is stored in the public bucket defined above
 module "sponsored_embargo_bucket" {
   source          = "./modules/dandiset_bucket"
   bucket_name     = "ember-dandi-archive-private"
