@@ -13,15 +13,15 @@ module "staging_dandiset_bucket" {
   }
 }
 
-# import {
-#   to = module.staging_dandiset_bucket.aws_s3_bucket.dandiset_bucket
-#   id = "ember-public-data-sandbox"
-# }
-# 
-# import {
-#   to = module.staging_dandiset_bucket.aws_s3_bucket.log_bucket
-#   id = "ember-public-data-sandbox-logs"
-# }
+import {
+  to = module.staging_dandiset_bucket.aws_s3_bucket.dandiset_bucket
+  id = "ember-public-data-sandbox"
+}
+
+import {
+  to = module.staging_dandiset_bucket.aws_s3_bucket.log_bucket
+  id = "ember-public-data-sandbox-logs"
+}
 
 # Note: this bucket is no longer being used
 module "staging_embargo_bucket" {
