@@ -74,6 +74,9 @@ resource "aws_s3_bucket_ownership_controls" "dandiset_bucket" {
 }
 
 resource "aws_s3_bucket_acl" "dandiset_bucket" {
+  // Cannot use ACLs with "BucketOwnerEnforced"
+  count = var.aws_open_data ? 0 : 1
+
   depends_on = [aws_s3_bucket_ownership_controls.dandiset_bucket]
 
   bucket = aws_s3_bucket.dandiset_bucket.id
