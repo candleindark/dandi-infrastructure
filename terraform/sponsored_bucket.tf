@@ -13,6 +13,17 @@ module "sponsored_dandiset_bucket" {
   }
 }
 
+import {
+  
+  to = module.sponsored_dandiset_bucket.aws_s3_bucket.dandiset_bucket
+  id = "ember-open-data"
+}
+
+import {
+  to = module.sponsored_dandiset_bucket.aws_s3_bucket.log_bucket
+  id = "ember-open-data-logs"
+}
+
 // Note: While the embargo bucket is created in AWS, it is NOT actually used.
 // Embargoed data is stored in the public bucket defined above
 module "sponsored_embargo_bucket" {
