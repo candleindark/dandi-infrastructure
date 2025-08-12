@@ -33,7 +33,7 @@ module "sponsored_embargo_bucket" {
   heroku_user     = data.aws_iam_user.api
   log_bucket_name = "ember-dandi-archive-embargo-logs"
   providers = {
-    aws         = aws.sponsored
+    aws         = aws
     aws.project = aws
   }
 }
