@@ -23,7 +23,8 @@ import {
   id = "ember-public-data-sandbox-logs"
 }
 
-# Note: this bucket is no longer being used
+// Note: While the embargo bucket is created in AWS, it is NOT actually used.
+// Embargoed data is stored in the public bucket defined above
 module "staging_embargo_bucket" {
   source          = "./modules/dandiset_bucket"
   bucket_name     = "ember-dandi-api-sandbox-embargo-dandisets"
