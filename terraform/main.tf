@@ -17,8 +17,7 @@ provider "aws" {
 }
 
 // The "sponsored" account, the Amazon-sponsored account with the public bucket
-// REDD-EMBER-dev AWS Account
-// TODO: Change to Open Data Bucket Account once we've tested (EMBER-DEV AWS account)
+// Open Data AWS Account
 provider "aws" {
   alias               = "sponsored"
   region              = "us-east-1"
@@ -55,4 +54,10 @@ data "aws_canonical_user_id" "sponsored_account" {
 
 data "aws_caller_identity" "sponsored_account" {
   provider = aws.sponsored
+}
+
+data "aws_region" "current" {}
+
+data "heroku_team" "dandi" {
+  name = "ember-dandi"
 }

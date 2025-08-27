@@ -5,7 +5,7 @@ module "staging_dandiset_bucket" {
   versioning              = true
   aws_open_data           = true
   allow_heroku_put_object = true
-  heroku_user             = data.aws_iam_user.api_staging
+  heroku_user             = aws_iam_user.api_sandbox_heroku_user
   log_bucket_name         = "ember-public-data-sandbox-logs"
   providers = {
     aws         = aws
@@ -29,7 +29,7 @@ module "staging_embargo_bucket" {
   source          = "./modules/dandiset_bucket"
   bucket_name     = "ember-dandi-api-sandbox-embargo-dandisets"
   versioning      = false
-  heroku_user     = data.aws_iam_user.api_staging
+  heroku_user     = aws_iam_user.api_sandbox_heroku_user
   log_bucket_name = "ember-dandi-api-sandbox-embargo-dandisets-logs"
   providers = {
     aws         = aws

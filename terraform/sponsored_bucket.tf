@@ -5,7 +5,8 @@ module "sponsored_dandiset_bucket" {
   versioning                            = true
   aws_open_data                         = true
   allow_cross_account_heroku_put_object = true
-  heroku_user                           = data.aws_iam_user.api
+  heroku_user                           = aws_iam_user.api_heroku_user
+  embargo_readers                       = [aws_iam_user.backup]
   log_bucket_name                       = "ember-open-data-logs"
   providers = {
     aws         = aws.sponsored
@@ -14,7 +15,7 @@ module "sponsored_dandiset_bucket" {
 }
 
 import {
-  
+
   to = module.sponsored_dandiset_bucket.aws_s3_bucket.dandiset_bucket
   id = "ember-open-data"
 }
@@ -30,7 +31,7 @@ module "sponsored_embargo_bucket" {
   source          = "./modules/dandiset_bucket"
   bucket_name     = "ember-dandi-archive-embargo"
   versioning      = false
-  heroku_user     = data.aws_iam_user.api
+  heroku_user     = aws_iam_user.api_heroku_user
   log_bucket_name = "ember-dandi-archive-embargo-logs"
   providers = {
     aws         = aws
