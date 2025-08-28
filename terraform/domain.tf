@@ -17,13 +17,13 @@ resource "aws_route53_record" "gui" {
   ttl     = "300"
   records = ["75.2.60.5"] # Netlify's load balancer, which will proxy to our app
 }
-resource "aws_route53_record" "www" {
-  zone_id = aws_route53_zone.dandi.zone_id
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["gui-dandiarchive-org.netlify.app."]
-}
+// resource "aws_route53_record" "www" {
+//   zone_id = aws_route53_zone.dandi.zone_id
+//   name    = "www"
+//   type    = "CNAME"
+//   ttl     = "300"
+//   records = ["gui-dandiarchive-org.netlify.app."]
+// }
 
 # This resource block and the next are using GitHub's custom domain
 # redirection.
