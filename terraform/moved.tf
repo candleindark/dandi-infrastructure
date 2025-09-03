@@ -30,3 +30,8 @@ moved {
   from = module.api.aws_iam_access_key.heroku_user
   to   = aws_iam_access_key.api_heroku_user
 }
+
+moved {
+  from = module.api_sandbox.aws_iam_user.heroku_user
+  to = aws_iam_user.api_sandbox_heroku_user
+}
