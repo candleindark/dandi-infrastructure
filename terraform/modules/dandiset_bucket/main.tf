@@ -90,7 +90,7 @@ resource "aws_iam_user_policy" "dandiset_bucket_owner" {
   provider = aws.project
 
   name = "${var.bucket_name}-ownership-policy"
-  user = var.heroku_user.user_name
+  user = var.heroku_user.name
 
   policy = data.aws_iam_policy_document.dandiset_bucket_owner.json
 }
@@ -171,7 +171,8 @@ data "aws_iam_policy_document" "dandiset_bucket_policy" {
     }
   }
 
-  # Disallow access to embargoed objects, unless using the heroku user arn
+  # Disallow access to embargoed objects, unless using the heroku user arn, or
+  # an extra, authorized embargo reader account.
   dynamic "statement" {
     for_each = var.public ? [1] : []
 
@@ -193,7 +194,10 @@ data "aws_iam_policy_document" "dandiset_bucket_policy" {
       condition {
         test     = "ArnNotEquals"
         variable = "aws:PrincipalArn"
-        values   = [var.heroku_user.arn]
+        values = flatten([
+          var.heroku_user.arn,
+          [for user in var.embargo_readers : user.arn],
+        ])
       }
     }
   }

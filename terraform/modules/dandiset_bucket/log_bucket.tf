@@ -101,7 +101,7 @@ resource "aws_iam_user_policy" "dandiset_log_bucket_owner" {
   provider = aws.project
 
   name = "${var.log_bucket_name}-ownership-policy"
-  user = var.heroku_user.user_name
+  user = var.heroku_user.name
 
   policy = data.aws_iam_policy_document.dandiset_log_bucket_owner.json
 }
