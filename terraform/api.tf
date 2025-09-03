@@ -73,7 +73,7 @@ resource "heroku_formation" "api_checksum_worker" {
 
 resource "aws_route53_record" "api_heroku" {
   zone_id = aws_route53_zone.dandi.zone_id
-  name    = "api"
+  name    = "api-dandi"
   type    = "CNAME"
   ttl     = "300"
   records = [module.api_heroku.cname]
