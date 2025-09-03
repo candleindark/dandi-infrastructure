@@ -80,7 +80,7 @@ resource "aws_route53_record" "api_heroku" {
 }
 
 resource "aws_iam_user" "api_heroku_user" {
-  name = "dandi-api-heroku"
+  name = "ember-dandi-api-heroku"
 }
 
 resource "aws_iam_access_key" "api_heroku_user" {
