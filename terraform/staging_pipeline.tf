@@ -23,7 +23,7 @@ module "api_sandbox_heroku" {
   config_vars = {
     AWS_ACCESS_KEY_ID                  = aws_iam_access_key.api_sandbox_heroku_user.id
     AWS_DEFAULT_REGION                 = data.aws_region.current.name
-    DJANGO_ALLOWED_HOSTS               = join(",", ["https://apl-setup--ember-dandi-archive.netlify.app", "https://api-dandi-sandbox.emberarchive.org"])
+    DJANGO_ALLOWED_HOSTS               = join(",", ["apl-setup--ember-dandi-archive.netlify.app", "api-dandi-sandbox.emberarchive.org"])
     DJANGO_CORS_ALLOWED_ORIGINS        = join(",", ["https://apl-setup--ember-dandi-archive.netlify.app", "https://neurosift.app"])
     DJANGO_CORS_ALLOWED_ORIGIN_REGEXES = join(",", ["^https:\\/\\/[0-9a-z\\-]+--dandi-sandbox.emberarchive-org\\.netlify\\.app$", "^https:\\/\\/[0-9a-z\\-]+--ember-dandi-archive\\.netlify\\.app$"])
     DJANGO_DEFAULT_FROM_EMAIL          = "admin@api-dandi-sandbox.emberarchive.org"
@@ -73,7 +73,7 @@ resource "heroku_formation" "api_sandbox_checksum_worker" {
 
 resource "aws_route53_record" "api_sandbox_heroku" {
   zone_id = aws_route53_zone.dandi_sandbox.zone_id
-  name    = "api"
+  name    = "api-dandi-sandbox"
   type    = "CNAME"
   ttl     = "300"
   records = [module.api_sandbox_heroku.cname]

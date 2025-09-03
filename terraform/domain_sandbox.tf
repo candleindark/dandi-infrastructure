@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "dandi_sandbox" {
-  name = "apl-setup--ember-dandi-archive.netlify.app" // Future: "dandi-sandbox.emberarchive.org"
+  name = "emberarchive.org" // "apl-setup--ember-dandi-archive.netlify.app" // Future: "dandi-sandbox.emberarchive.org"
 }
 
 # Point the top-level zone at the sandbox zone
