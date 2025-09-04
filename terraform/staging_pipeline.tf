@@ -18,15 +18,15 @@ module "api_sandbox_heroku" {
 
   team_name = data.heroku_team.dandi.name
   app_name  = "ember-dandi-api-sandbox"
-  fqdn      = "api-dandi-sandbox.emberarchive.org"
+  fqdn      = "api-dandi.sandbox.emberarchive.org"
 
   config_vars = {
     AWS_ACCESS_KEY_ID                  = aws_iam_access_key.api_sandbox_heroku_user.id
     AWS_DEFAULT_REGION                 = data.aws_region.current.name
-    DJANGO_ALLOWED_HOSTS               = join(",", ["apl-setup--ember-dandi-archive.netlify.app", "api-dandi-sandbox.emberarchive.org"])
+    DJANGO_ALLOWED_HOSTS               = join(",", ["apl-setup--ember-dandi-archive.netlify.app", "api-dandi.sandbox.emberarchive.org"])
     DJANGO_CORS_ALLOWED_ORIGINS        = join(",", ["https://apl-setup--ember-dandi-archive.netlify.app", "https://neurosift.app"])
-    DJANGO_CORS_ALLOWED_ORIGIN_REGEXES = join(",", ["^https:\\/\\/[0-9a-z\\-]+--dandi-sandbox.emberarchive-org\\.netlify\\.app$", "^https:\\/\\/[0-9a-z\\-]+--ember-dandi-archive\\.netlify\\.app$"])
-    DJANGO_DEFAULT_FROM_EMAIL          = "admin@api-dandi-sandbox.emberarchive.org"
+    DJANGO_CORS_ALLOWED_ORIGIN_REGEXES = join(",", ["^https:\\/\\/[0-9a-z\\-]+--dandi-sandbox-emberarchive-org\\.netlify\\.app$", "^https:\\/\\/[0-9a-z\\-]+--ember-dandi-archive\\.netlify\\.app$"])
+    DJANGO_DEFAULT_FROM_EMAIL          = "admin@api-dandi.sandbox.emberarchive.org"
     DJANGO_SETTINGS_MODULE             = "dandiapi.settings.heroku_production"
     DJANGO_STORAGE_BUCKET_NAME         = module.staging_dandiset_bucket.bucket_name
 
