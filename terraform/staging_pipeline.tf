@@ -2,7 +2,7 @@ module "api_sandbox_smtp" {
   source  = "kitware-resonant/resonant/heroku//modules/smtp"
   version = "2.1.1"
 
-  fqdn            = "api-dandi-sandbox.emberarchive.org"
+  fqdn            = "api-dandi.sandbox.emberarchive.org"
   project_slug    = "ember-dandi-api-sandbox"
   route53_zone_id = aws_route53_zone.dandi_sandbox.zone_id
 }
@@ -34,8 +34,8 @@ module "api_sandbox_heroku" {
     DJANGO_CELERY_WORKER_CONCURRENCY = "2"
     DJANGO_SENTRY_DSN                = data.sentry_key.this.dsn_public
     DJANGO_SENTRY_ENVIRONMENT        = "staging"
-    DJANGO_DANDI_WEB_APP_URL         = "https://apl-setup--ember-dandi-archive.netlify.app" // Future: "dandi-sandbox.emberarchive.org"
-    DJANGO_DANDI_API_URL             = "https://api-dandi-sandbox.emberarchive.org"
+    DJANGO_DANDI_WEB_APP_URL         = "https://apl-setup--ember-dandi-archive.netlify.app" // Future: "dandi.sandbox.emberarchive.org"
+    DJANGO_DANDI_API_URL             = "https://api-dandi.sandbox.emberarchive.org"
     DJANGO_DANDI_JUPYTERHUB_URL      = "https://hub.dandiarchive.org/"
     DJANGO_DANDI_DOI_API_URL         = "https://api.test.datacite.org/dois"
     DJANGO_DANDI_DOI_API_USER        = "JHU.NXHEVY"
@@ -73,7 +73,7 @@ resource "heroku_formation" "api_sandbox_checksum_worker" {
 
 resource "aws_route53_record" "api_sandbox_heroku" {
   zone_id = aws_route53_zone.dandi_sandbox.zone_id
-  name    = "api-dandi-sandbox"
+  name    = "api-dandi"
   type    = "CNAME"
   ttl     = "300"
   records = [module.api_sandbox_heroku.cname]

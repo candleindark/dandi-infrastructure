@@ -1,11 +1,11 @@
 resource "aws_route53_zone" "dandi_sandbox" {
-  name = "emberarchive.org" // "apl-setup--ember-dandi-archive.netlify.app" // Future: "dandi-sandbox.emberarchive.org"
+  name = "sandbox.emberarchive.org" // "apl-setup--ember-dandi-archive.netlify.app" // Future: "dandi.sandbox.emberarchive.org"
 }
 
 # Point the top-level zone at the sandbox zone
 resource "aws_route53_record" "ns_sandbox" {
   zone_id = aws_route53_zone.dandi.zone_id
-  name    = "dandi-sandbox"
+  name    = "sandbox"
   type    = "NS"
   ttl     = "30"
   records = aws_route53_zone.dandi_sandbox.name_servers

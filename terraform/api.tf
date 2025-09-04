@@ -35,7 +35,7 @@ module "api_heroku" {
     DJANGO_SENTRY_DSN                = data.sentry_key.this.dsn_public
     DJANGO_SENTRY_ENVIRONMENT        = "production"
     DJANGO_DANDI_WEB_APP_URL         = "https://dandi.emberarchive.org"
-    DJANGO_DANDI_API_URL             = "https://api-dandi.emberarchive.org"
+    DJANGO_DANDI_API_URL             = "https://api.dandi.emberarchive.org" // TODO! fix
     DJANGO_DANDI_JUPYTERHUB_URL      = "https://hub.dandiarchive.org/"
     DJANGO_DANDI_DOI_API_URL         = "https://api.test.datacite.org/dois" # TODO: Replace with "https://api.datacite.org/dois"
     DJANGO_DANDI_DOI_API_USER        = "JHU.NXHEVY" # TODO: Replace with non-test user
