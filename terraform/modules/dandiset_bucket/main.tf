@@ -69,20 +69,8 @@ resource "aws_s3_bucket_ownership_controls" "dandiset_bucket" {
   bucket = aws_s3_bucket.dandiset_bucket.id
 
   rule {
-    object_ownership = var.aws_open_data ? "BucketOwnerEnforced" : "BucketOwnerPreferred"
+    object_ownership = "BucketOwnerEnforced"
   }
-}
-
-resource "aws_s3_bucket_acl" "dandiset_bucket" {
-  // Cannot use ACLs with "BucketOwnerEnforced"
-  count = var.aws_open_data ? 0 : 1
-
-  depends_on = [aws_s3_bucket_ownership_controls.dandiset_bucket]
-
-  bucket = aws_s3_bucket.dandiset_bucket.id
-
-  // Public access is granted via a bucket policy, not a canned ACL
-  acl = "private"
 }
 
 resource "aws_iam_user_policy" "dandiset_bucket_owner" {
@@ -131,12 +119,6 @@ data "aws_iam_policy_document" "dandiset_bucket_owner" {
     ]
 
     actions = ["s3:*"]
-
-    condition {
-      test     = "StringEquals"
-      variable = "s3:x-amz-acl"
-      values   = ["bucket-owner-full-control"]
-    }
   }
 }
 
@@ -223,11 +205,6 @@ data "aws_iam_policy_document" "dandiset_bucket_policy" {
         values   = [data.aws_caller_identity.sponsored_account.account_id]
       }
       condition {
-        test     = "StringEquals"
-        variable = "s3:x-amz-acl"
-        values   = ["bucket-owner-full-control"]
-      }
-      condition {
         test     = "ArnLike"
         variable = "aws:SourceArn"
         values   = [aws_s3_bucket.dandiset_bucket.arn]
@@ -260,12 +237,6 @@ data "aws_iam_policy_document" "dandiset_bucket_policy" {
     ]
 
     actions = ["s3:*"]
-
-    condition {
-      test     = "StringEquals"
-      variable = "s3:x-amz-acl"
-      values   = ["bucket-owner-full-control"]
-    }
 
     principals {
       type        = "AWS"
