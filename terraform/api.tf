@@ -41,6 +41,8 @@ module "api_heroku" {
     DJANGO_DANDI_DOI_API_USER        = "dartlib.dandi"
     DJANGO_DANDI_DOI_API_PREFIX      = "10.48324"
     DJANGO_DANDI_DOI_PUBLISH         = "true"
+    DJANGO_DANDI_INSTANCE_NAME       = "DANDI"
+    DJANGO_DANDI_INSTANCE_IDENTIFIER = "RRID:SCR_017571"
 
     # These may be removed in the future
     DJANGO_DANDI_DANDISETS_BUCKET_NAME   = module.sponsored_dandiset_bucket.bucket_name
