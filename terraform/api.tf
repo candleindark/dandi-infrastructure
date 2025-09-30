@@ -36,10 +36,6 @@ module "api" {
         DJANGO_DANDI_DANDISETS_EMBARGO_BUCKET_PREFIX   = ""
         DJANGO_DANDI_DANDISETS_LOG_BUCKET_NAME         = module.sponsored_lincset_bucket_us_east_2.log_bucket_name
         DJANGO_DANDI_DANDISETS_EMBARGO_LOG_BUCKET_NAME = module.sponsored_embargo_bucket_us_east_2.log_bucket_name
-        DJANGO_DANDI_DOI_API_URL                       = "https://api.datacite.org/dois"
-        DJANGO_DANDI_DOI_API_USER                      = "temp.dandi"
-        DJANGO_DANDI_DOI_API_PREFIX                    = "temp"
-        DJANGO_DANDI_DOI_PUBLISH                       = "true"
         DJANGO_SENTRY_DSN                              = "https://833c159dc622528b21b4ce4adef6dbf8@o4506237212033024.ingest.sentry.io/4506237213212672"
         DJANGO_SENTRY_ENVIRONMENT                      = "production"
         DJANGO_CELERY_WORKER_CONCURRENCY               = "4"
@@ -51,7 +47,6 @@ module "api" {
         WEBKNOSSOS_ORGANIZATION_NAME                   = "LINC"
       }
       additional_sensitive_django_vars = {
-        DJANGO_DANDI_DOI_API_PASSWORD = "temp"
       }
 }
 
