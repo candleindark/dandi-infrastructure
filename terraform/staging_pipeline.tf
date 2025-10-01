@@ -38,7 +38,7 @@ module "api_staging" {
     DJANGO_SENTRY_DSN                              = "https://833c159dc622528b21b4ce4adef6dbf8@o4506237212033024.ingest.sentry.io/4506237213212672"
     DJANGO_SENTRY_ENVIRONMENT                      = "staging"
     DJANGO_CELERY_WORKER_CONCURRENCY               = "2"
-    DJANGO_DANDI_INSTANCE_NAME                     = "DANDI-STAGING"
+    DJANGO_DANDI_INSTANCE_NAME                     = "LINC-STAGING"
     DJANGO_DANDI_WEB_APP_URL                       = "https://staging--lincbrain-org.netlify.app"
     DJANGO_DANDI_API_URL                           = "https://staging-api.lincbrain.org"
     DJANGO_DANDI_JUPYTERHUB_URL                    = "https://hub.dandiarchive.org/"
