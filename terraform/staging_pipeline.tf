@@ -41,6 +41,9 @@ module "api_sandbox_heroku" {
     DJANGO_DANDI_DOI_API_USER        = "JHU.NXHEVY"
     DJANGO_DANDI_DOI_API_PREFIX      = "10.82754"
     DJANGO_DANDI_DOI_PUBLISH         = "false"
+    DJANGO_DANDI_INSTANCE_NAME       = "EMBER-DANDI-STAGING"
+    DJANGO_DANDI_INSTANCE_IDENTIFIER = "RRID:SCR_026700"
+    DJANGO_DANDI_LICENSES            = jsonencode(["spdx:CC0-1.0", "spdx:CC-BY-4.0", "spdx:CC-BY-NC-SA-4.0"])
 
     # These may be removed in the future
     DJANGO_DANDI_DANDISETS_BUCKET_NAME   = module.staging_dandiset_bucket.bucket_name
